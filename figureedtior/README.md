@@ -19,3 +19,6 @@ This editor uses the MVC architecture pattern.
 ### How to clean up (from Terminal):
 
 1. Run `ant clean` to clean the project (i.e., delete all generated files).
+
+### Ob
+1. observable pattern implementation: ->
