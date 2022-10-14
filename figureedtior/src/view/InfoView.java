@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.GridLayout;
+import java.beans.PropertyChangeEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -46,4 +47,16 @@ public class InfoView implements View
 
 	this.infoField.setText(infoMsg);
     }
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		String infoMsg = "";
+		//TODO : See how to send model or know isComplete
+		/*if (model.isComplete() == false) {
+			infoMsg = "This figure is not yet complete.";
+		}*/
+
+		this.infoField.setText(infoMsg);
+
+	}
 }

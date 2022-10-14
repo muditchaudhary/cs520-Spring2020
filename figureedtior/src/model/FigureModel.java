@@ -1,14 +1,22 @@
 package model;
 
 import javax.swing.ImageIcon;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 
 public class FigureModel 
 {
-    ImageIcon image = null;
+    ImageIcon imageIcon = null;
     String caption = null;
+    private PropertyChangeSupport support;
+
+    public FigureModel() {
+        support = new PropertyChangeSupport(this);
+    }
+
     public ImageIcon getImage() {
-        return this.image;
+        return this.imageIcon;
     }
 
     /**
@@ -19,7 +27,8 @@ public class FigureModel
      * @throws IllegalArgumentException if the ImageIcon is null
      */
     public void setImage(ImageIcon newImage) {
-	    this.image = newImage;
+        support.firePropertyChange("imageIcon", this.imageIcon, newImage);
+	    this.imageIcon = newImage;
     }
 
     public String getCaption() {
@@ -34,6 +43,7 @@ public class FigureModel
      * @throws IllegalArgumentException if the String is null or empty
      */
     public void setCaption(String newCaption) {
+        support.firePropertyChange("caption", this.caption, newCaption);
 	    this.caption = newCaption;
     }
 
@@ -48,7 +58,14 @@ public class FigureModel
 	    if (getCaption() != null && getImage()!=null){
             return true;
         }
-
         return false;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener pcl) {
+        support.removePropertyChangeListener(pcl);
     }
 }

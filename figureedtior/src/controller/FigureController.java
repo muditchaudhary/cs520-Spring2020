@@ -20,6 +20,8 @@ public class FigureController
     private FigureModel model;
     private List<View> views;
 
+	FigureModel observable;
+
 
     public FigureController(JFrame parent, FigureModel model, List<View> views)
     {
@@ -29,6 +31,8 @@ public class FigureController
 	this.model = model;
 	this.views = new ArrayList<View>();
 	this.views.addAll(views);
+
+	observable = model;
 
 	// Initialize the views
 	for (View currentView : this.views) {
@@ -49,12 +53,14 @@ public class FigureController
 
 	    // After user input, update the model
 	    try {
-		this.model.setImage(newImage);
-		
+			observable.setImage(newImage);
+
+		/*
+		//this.model.setImageIcon(newImage);
 		// After updating the model, update its views
 		for (View currentView : this.views) {
 		    currentView.update(this.model);
-		}
+		}*/
 	    }
 	    catch (IllegalArgumentException e) {
 		JOptionPane.showMessageDialog(null, ERROR_REPORT, e.getMessage(), JOptionPane.ERROR_MESSAGE);
@@ -68,12 +74,15 @@ public class FigureController
 
 	// After user input, update the model
 	try {
+		observable.setCaption(newCaption);
+		/*
 	    this.model.setCaption(newCaption);
 	
 	    // After updating the model, update its views
 	    for (View currentView : this.views) {
 		currentView.update(this.model);
 	    }
+	    */
 	}
 	catch (IllegalArgumentException e) {
 	    JOptionPane.showMessageDialog(null, ERROR_REPORT, e.getMessage(), JOptionPane.ERROR_MESSAGE);
