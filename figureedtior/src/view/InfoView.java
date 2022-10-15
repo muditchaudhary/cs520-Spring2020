@@ -52,7 +52,6 @@ public class InfoView implements View
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		String infoMsg = "";
-		System.out.println(evt.getPropertyName());
 		if ("isComplete".equals(evt.getPropertyName())) {
 			if ((String)evt.getNewValue() == "True"){
 				this.infoField.setText(infoMsg);
