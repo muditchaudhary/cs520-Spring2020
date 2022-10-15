@@ -28,6 +28,7 @@ public class InfoView implements View
 
 	this.infoField = new JTextField();
 	this.infoField.setEditable(false);
+	this.infoField.setText("This figure is not yet complete");
 	this.infoPanel.add(this.infoField);
     }
 
@@ -51,12 +52,18 @@ public class InfoView implements View
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		String infoMsg = "";
-		//TODO : See how to send model or know isComplete
-		/*if (model.isComplete() == false) {
-			infoMsg = "This figure is not yet complete.";
-		}*/
+		System.out.println(evt.getPropertyName());
+		if ("isComplete".equals(evt.getPropertyName())) {
+			if ((String)evt.getNewValue() == "True"){
+				this.infoField.setText(infoMsg);
+			}
+			else{
+				this.infoField.setText("This figure is not yet complete");
+			}
+			//this.captionView.setText((boolean) evt.getNewValue());
+		}
 
-		this.infoField.setText(infoMsg);
+		//this.infoField.setText(infoMsg);
 
 	}
 }

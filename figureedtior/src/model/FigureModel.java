@@ -9,6 +9,8 @@ public class FigureModel
 {
     ImageIcon imageIcon = null;
     String caption = null;
+
+    String isComplete = "False";
     private PropertyChangeSupport support;
 
     public FigureModel() {
@@ -59,6 +61,11 @@ public class FigureModel
             return true;
         }
         return false;
+    }
+
+    public void setComplete(String complete) {
+        support.firePropertyChange("isComplete", this.isComplete, complete);
+        isComplete = complete;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {

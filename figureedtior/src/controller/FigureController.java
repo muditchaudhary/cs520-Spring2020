@@ -36,8 +36,9 @@ public class FigureController
 
 	// Initialize the views
 	for (View currentView : this.views) {
+		observable.addPropertyChangeListener(currentView);
 	    currentView.addController(this);
-	    currentView.update(this.model);
+	    //currentView.update(this.model);
 	}
     }
 
@@ -54,6 +55,12 @@ public class FigureController
 	    // After user input, update the model
 	    try {
 			observable.setImage(newImage);
+			if ((boolean) observable.isComplete()==true){
+				observable.setComplete("True");
+			}
+			else{
+				observable.setComplete("False");
+			}
 
 		/*
 		//this.model.setImageIcon(newImage);
@@ -75,6 +82,13 @@ public class FigureController
 	// After user input, update the model
 	try {
 		observable.setCaption(newCaption);
+		System.out.println("new Caption setting");
+		if ((boolean) observable.isComplete()){
+			observable.setComplete("True");
+		}
+		else{
+			observable.setComplete("False");
+		}
 		/*
 	    this.model.setCaption(newCaption);
 	
