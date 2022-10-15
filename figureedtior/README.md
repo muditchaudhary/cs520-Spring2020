@@ -20,5 +20,7 @@ This editor uses the MVC architecture pattern.
 
 1. Run `ant clean` to clean the project (i.e., delete all generated files).
 
-### Ob
-1. observable pattern implementation: ->
+### Observer Design Pattern Implementation
+1. The Observer design pattern has been implemeneted, where the FigureModel is the Observable and the FigureView is the Observer.
+2. We have utilized the Class PropertyChangeSupport and PropertyChangeListener for this implementation.
+3. 
